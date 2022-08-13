@@ -1,0 +1,38 @@
+{
+    "FR": {
+       "home": "Accueil",
+       "search": "Rechercher",
+       "view": "Voir",
+       "common": "Commune",
+       "platinum": "Platine",
+       "season": "Saison",
+       "last_obtained": "Dernière carte obtenue",
+       "already_obtained": "cartes déjà obtenues",
+       "cards_obtained": "cartes obtenues",
+       "result": "Résultat",
+       "since": "depuis le",
+       "loading": "Ce chargement ne se fait qu'une seule fois au chargement du site.",
+       "error": "Erreur, la carte ne doit pas avoir de possesseur.",
+       "not_available": "Non disponible",
+       "description": "Rules featuring est un petit site pour voir quel artiste Rules a déjà collaboré avec lequel",
+       "history": "Historique"
+    },
+    "EN": {
+        "home": "Home",
+        "search": "Search",
+        "view": "View",
+        "common": "Common",
+        "platinum": "Platinum",
+        "season": "Season",
+        "last_obtained": "Last card obtained",
+        "already_obtained": "card already obtained",
+        "cards_obtained": "cards obtained",
+        "result": "Result",
+        "since": "since",
+        "loading": "This loading will only happen once to load all data.",
+        "error": "Error, card might not have an owner",
+        "not_available": "Not available",
+        "description": "Rules featuring is a small site to see which artist Rules has already collaborated with which",
+        "history": "History"
+    }
+}
