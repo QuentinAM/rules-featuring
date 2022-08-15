@@ -159,6 +159,11 @@
         <img src={Spinner} class="animate-spin h-10" alt="spinner"/>
     {:else}
         <div class="h-10"></div>
+        {#if albumData.length > 0 || featData.length > 0}
+            <div class:tooltip-success={copiedClipboard} class="tooltip tooltip-bottom" data-tip={copiedClipboard ? 'Copied !' : 'Copy'}>
+                <button on:click={Copy} class="btn btn-primary w-full">Send this to a friend</button>
+            </div>
+        {/if}
         {#if albumData.length > 0}
             <h1 class="w-full font-semibold text-3xl">Common projects</h1>
         {/if}
@@ -171,11 +176,5 @@
         {#each featData as track}
             <Track {track} />
         {/each}
-
-        {#if albumData.length > 0 || featData.length > 0}
-            <div class:tooltip-success={copiedClipboard} class="tooltip tooltip-bottom" data-tip={copiedClipboard ? 'Copied !' : 'Copy'}>
-                <button on:click={Copy} class="btn btn-primary w-full">Send this to a friend</button>
-            </div>
-        {/if}
     {/if}
 {/if}
