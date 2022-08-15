@@ -125,29 +125,6 @@
 {#if loading}
     <img src={Spinner} class="animate-spin h-10" alt="spinner"/>
 {:else}
-    {#if loadingAlbum || loadingTrack}
-        <img src={Spinner} class="animate-spin h-10" alt="spinner"/>
-    {:else}
-        <div class="h-10"></div>
-        {#if albumData.length > 0}
-            <h1 class="w-full font-semibold text-3xl">Common projects</h1>
-        {/if}
-        {#each albumData as album}
-            <Album {album} artist1={artistName1} artist2={artistName2} />
-        {/each}
-        {#if featData.length > 0}
-            <h1 class="w-full font-semibold text-3xl">Featuring</h1>
-        {/if}
-        {#each featData as track}
-            <Track {track} />
-        {/each}
-
-        {#if albumData.length > 0 || featData.length > 0}
-            <div class:tooltip-success={copiedClipboard} class="tooltip tooltip-bottom" data-tip={copiedClipboard ? 'Copied !' : 'Copy'}>
-                <button on:click={Copy} class="btn btn-primary w-full">Send this to a friend</button>
-            </div>
-        {/if}
-    {/if}
     <div class="flex flex-row space-x-2">
         <div class=" flex flex-col items-center">
             <h1>{artistName1}</h1>
@@ -178,4 +155,27 @@
             </div>
         </div>
     </div>
+    {#if loadingAlbum || loadingTrack}
+        <img src={Spinner} class="animate-spin h-10" alt="spinner"/>
+    {:else}
+        <div class="h-10"></div>
+        {#if albumData.length > 0}
+            <h1 class="w-full font-semibold text-3xl">Common projects</h1>
+        {/if}
+        {#each albumData as album}
+            <Album {album} artist1={artistName1} artist2={artistName2} />
+        {/each}
+        {#if featData.length > 0}
+            <h1 class="w-full font-semibold text-3xl">Featuring</h1>
+        {/if}
+        {#each featData as track}
+            <Track {track} />
+        {/each}
+
+        {#if albumData.length > 0 || featData.length > 0}
+            <div class:tooltip-success={copiedClipboard} class="tooltip tooltip-bottom" data-tip={copiedClipboard ? 'Copied !' : 'Copy'}>
+                <button on:click={Copy} class="btn btn-primary w-full">Send this to a friend</button>
+            </div>
+        {/if}
+    {/if}
 {/if}
