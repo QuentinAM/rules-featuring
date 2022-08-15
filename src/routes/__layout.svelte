@@ -5,7 +5,7 @@
 
 <Navbar />
 <div class="min-h-screen bg-base-200 flex justify-center">
-	<div class="flex flex-col items-center space-y-4 mt-4 w-full mx-4 lg:w-2/3 lg:mx-0">
+	<div class="flex flex-col items-center space-y-4 mt-4 w-full mx-4 lg:w-5/6 lg:mx-0">
 		<slot />
 	</div>
 </div>

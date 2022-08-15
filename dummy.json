@@ -1,0 +1,29 @@
+{
+  "external_urls": {
+      "spotify": "https://open.spotify.com/track/2XMjqvCBGhdvdKlNqVO2yW"
+  },
+  "name": "Meilleur karaté (feat. Caballero et JeanJass)",
+  "album_name": "Labrador bleu",
+  "release_date": "2022-04-15",
+  "images": {
+      "height": 640,
+      "url": "https://i.scdn.co/image/ab67616d0000b27358e6dafc4dfe8d38306b4308",
+      "width": 640
+  },
+  "artists": [
+      {
+          "name": "ISHA",
+          "external_urls": "https://open.spotify.com/artist/0dSh0CIa0HPd9kJmJSmGQo"
+      },
+      {
+          "name": "Caballero",
+          "external_urls": "https://open.spotify.com/artist/5DE0by3fZT0nrlJSutY2D7"
+      },
+      {
+          "name": "JeanJass",
+          "external_urls": "https://open.spotify.com/artist/11jTIrOwxFOLvhJIdb4FYo"
+      }
+  ],
+  "preview_url": "https://p.scdn.co/mp3-preview/6311cd91a52a76578fa85512b659929d4af4e97c?cid=543fd124caad490fafbb78743377dd09",
+  "duration_ms": 163632
+}

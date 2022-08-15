@@ -10,7 +10,7 @@
 </script>
 
 <div class="card card-side bg-base-100 shadow-xl w-full">
-    <figure><img src={pictureUrl} class="lg:h-52 h-40" alt="Movie"></figure>
+    <figure><img src={pictureUrl} loading="lazy" class="lg:h-52 h-40" alt="Movie"></figure>
     <div class="card-body">
         <h2 class="card-title">{name}</h2>
         <div>Saison {season}</div>
