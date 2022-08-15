@@ -2,7 +2,7 @@ import { getToken, spToken } from "./token.mjs";
 import Format from "./utils.mjs";
 
 export default async function GetFeat(first_artist, second_artist, gotToken = false){
-    let url = encodeURI(`https://api.spotify.com/v1/search?limit=10&type=track&market=fr&q=${`${first_artist} ${second_artist}`}`);
+    let url = encodeURI(`https://api.spotify.com/v1/search?limit=50&type=track&market=fr&q=${`${first_artist} ${second_artist}`}`);
     
     let response;
     try{

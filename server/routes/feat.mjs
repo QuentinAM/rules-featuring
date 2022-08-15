@@ -18,6 +18,13 @@ export default function GetFeatAndAlbum(first_artist, second_artist)
             return item.tracks.total > 1
         });
 
+        // Remove dublet
+        album_infos = album_infos.filter((item, index) => {
+            return album_infos.findIndex(item2 => {
+                return item2.name === item.name
+            }) === index;
+        });
+
         album_infos = album_infos.map(item => {
             return {
                 external_urls: item.external_urls,
@@ -45,12 +52,9 @@ export default function GetFeatAndAlbum(first_artist, second_artist)
 
         let feat = await GetFeat(first_artist, second_artist);
         feat = feat.map(item => {
-
             // Check if track don't exist on common projects
             if (album_infos.find(album => {
-                return album.tracks.find(track => {
-                    return track.name === item.name
-                })
+                return album.name === item.album.name;
             })){
                 return undefined;
             }
