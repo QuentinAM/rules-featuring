@@ -26,7 +26,7 @@
             <tbody>
             {#each album.tracks as track, index}
                 <tr>
-                    <td>{index + 1}</td>
+                    <th>{index + 1}</th>
                     <th>
                         <a class="link link-hover" href={track.external_urls.spotify} target="_blank">{track.name}</a>
                         <div class="text-slate-400 font-normal">
@@ -38,7 +38,7 @@
                     <td>
                         {#if track.preview_url}
                             <audio
-                                class="w-full"
+                                class="w-full rounded-lg"
                                 src={track.preview_url}
                                 controls
                             >
