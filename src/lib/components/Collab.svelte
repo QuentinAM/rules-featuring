@@ -1,6 +1,7 @@
 <script lang="ts">
     import Album from "./Album.svelte";
     import Track from './Track.svelte'
+    import Translation from "./Translation.svelte";
 
     export let pictureUrl: string;
     export let artistName1: string;
@@ -17,7 +18,11 @@
             <div class="flex flex-col">
                 <p class="font-semibold">{artistName2}</p>
                 {#if album.length > 0}
-                    <p>{album.length} common project{album.length > 1 ? 's' : ''} !</p>
+                    {#if album.length > 1}
+                        <p>{album.length} <Translation id="common_projects" /> !</p>
+                    {:else}
+                        <p>{album.length} <Translation id="common_project" /> !</p>
+                    {/if}
                 {/if}
                 {#if feat.length > 0}
                     <p>{feat.length} feat{feat.length > 1 ? 's' : ''} !</p>

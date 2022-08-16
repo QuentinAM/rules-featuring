@@ -169,7 +169,7 @@
     </div>
     {#if albumData.length > 0 || featData.length > 0}
         <div class:tooltip-success={copiedClipboard} class="tooltip tooltip-bottom" data-tip={copiedClipboard ? 'Copied !' : 'Copy'}>
-            <button on:click={Copy} class="btn btn-primary w-full">Send this to a friend</button>
+            <button on:click={Copy} class="btn btn-primary w-full"><Translation id="send"/></button>
         </div>
     {/if}
     {#each albumData as album, index}

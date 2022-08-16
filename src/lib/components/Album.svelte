@@ -1,5 +1,6 @@
 <script lang="ts">
     import { millisToMinutesAndSeconds } from '$lib/utils';
+    import Translation from './Translation.svelte';
 
     export let album: any;
     export let artist1: string;
@@ -8,19 +9,19 @@
 
 <div class="space-y-1 items-center flex flex-col">
     <a href={album.external_urls.spotify} target="_blank" class="font-semibold text-xl link link-hover">{album.name} - {artist1} x {artist2}</a>
-    <p>Released on {album.release_date}</p>
+    <p><Translation id="released_on"/> {album.release_date}</p>
 </div>
-<div class="card card-side bg-base-100 shadow-xl lg:h-60 h-32 w-full">
-    <figure><img src={album.images.url} class="lg:w-60 w-32" alt="Album"></figure>
+<div class="card card-side bg-base-100 shadow-xl lg:h-52 h-32 w-full overflow-y-auto">
+    <figure><img src={album.images.url} class="lg:w-52 w-32" alt="Album"></figure>
     <div class="overflow-x-auto w-full">
         <table class="table w-full">
             <!-- head -->
             <thead>
             <tr>
                 <th></th>
-                <th>Name</th>
-                <th>Preview</th>
-                <th>Duration</th>
+                <th><Translation id="name"/></th>
+                <th><Translation id="preview"/></th>
+                <th><Translation id="duration"/></th>
             </tr>
             </thead>
             <tbody>
@@ -45,7 +46,7 @@
                                 <track kind="captions" />
                             </audio>
                         {:else}
-                            <p class="text-error">Unavailable</p>
+                            <p class="text-error"><Translation id="unavailable"/></p>
                         {/if}
                     </td>
                     <td>{`${millisToMinutesAndSeconds(track.duration_ms)}s`.replace('.', ':')}</td>
