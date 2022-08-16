@@ -1,4 +1,4 @@
-import { writable } from "svelte/store";
+import { writable } from 'svelte/store';
 
 export const allCards = writable<any[]>([]);
 export const allData = writable<any[]>([]);
