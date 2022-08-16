@@ -31,11 +31,13 @@
 		</div>
 	</div>
 	<div class="collapse-content space-y-4">
-		{#if album.length > 1}
-			<p><Translation id="common_Projects" /> !</p>
-		{:else}
-			<p><Translation id="common_Project" /> !</p>
-		{/if}
+		{#if album.length > 0}
+            {#if album.length > 1}
+                <p>{album.length} <Translation id="common_projects" /> !</p>
+            {:else}
+                <p>{album.length} <Translation id="common_project" /> !</p>
+            {/if}
+        {/if}
 
 		{#each album as a}
 			<Album album={a} artist1={artistName1} artist2={artistName2} />
