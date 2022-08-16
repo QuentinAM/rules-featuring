@@ -2,7 +2,7 @@ import { getToken, spToken } from "./token.mjs";
 import Format from './utils.mjs';
 
 export default async function GetAlbum(first_artist, second_artist, gotToken = false){
-    let url = encodeURI(`https://api.spotify.com/v1/search?limit=30&type=album&market=fr&q=${`${first_artist} ${second_artist}`}`);
+    let url = encodeURI(`https://api.spotify.com/v1/search?limit=20&type=album&market=fr&q=${`${first_artist} ${second_artist}`}`);
     
     let response;
     try{
@@ -29,7 +29,7 @@ export default async function GetAlbum(first_artist, second_artist, gotToken = f
         return GetAlbum(first_artist, second_artist, true);
     }
 
-    let res = data.albums.items.map(item => {
+    let res = data.albums?.items.map(item => {
         // Check if both artist are in item.artists list
         first_artist = Format(first_artist);
         second_artist = Format(second_artist);
@@ -45,7 +45,7 @@ export default async function GetAlbum(first_artist, second_artist, gotToken = f
     });
 
     // Remove undefined values
-    res = res.filter((item) => {
+    res = res?.filter((item) => {
         return item !== undefined;
     });
 

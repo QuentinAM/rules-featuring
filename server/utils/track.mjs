@@ -30,7 +30,7 @@ export default async function GetFeat(first_artist, second_artist, gotToken = fa
         return GetFeat(first_artist, second_artist, true);
     }
 
-    let res = data.tracks.items.map(item => {
+    let res = data.tracks?.items.map(item => {
         // Check if both artist are in item.artists list
         first_artist = Format(first_artist);
         second_artist = Format(second_artist);
@@ -46,11 +46,11 @@ export default async function GetFeat(first_artist, second_artist, gotToken = fa
     });
 
     // Remove undefined values
-    res = res.filter((item) => {
+    res = res?.filter((item) => {
         return item !== undefined;
     });
 
-    res = res.map((item) => {
+    res = res?.map((item) => {
         return item.album;
     })
 

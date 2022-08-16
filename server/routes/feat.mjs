@@ -7,25 +7,25 @@ export default function GetFeatAndAlbum(first_artist, second_artist)
 {
     return new Promise(async (resolve, reject) => {
         const album = await GetAlbum(first_artist, second_artist);
-        let album_infos = await Promise.all(album.map(item => {
+        let album_infos = album ? await Promise.all(album.map(item => {
             if (item) return GetAlbumInfos(item.album.href)
-        }));
+        })) : [];
         
         // ALBUMS
 
         // Keep only album with more than 1 track
-        album_infos = album_infos.filter(item => {
-            return item.tracks.total > 1
+        album_infos = album_infos?.filter(item => {
+            return item.tracks?.total > 1
         });
 
         // Remove dublet
-        album_infos = album_infos.filter((item, index) => {
-            return album_infos.findIndex(item2 => {
+        album_infos = album_infos?.filter((item, index) => {
+            return album_infos?.findIndex(item2 => {
                 return item2.name === item.name
             }) === index;
         });
 
-        album_infos = album_infos.map(item => {
+        album_infos = album_infos?.map(item => {
             return {
                 external_urls: item.external_urls,
                 name: item.name,
@@ -51,7 +51,7 @@ export default function GetFeatAndAlbum(first_artist, second_artist)
         // FEAT
 
         let feat = await GetFeat(first_artist, second_artist);
-        feat = feat.map(item => {
+        feat = feat?.map(item => {
             // Check if track don't exist on common projects
             if (album_infos.find(album => {
                 return album.name === item.album.name;
@@ -78,13 +78,13 @@ export default function GetFeatAndAlbum(first_artist, second_artist)
         });
 
         // Remove undefined
-        feat = feat.filter((item) => {
+        feat = feat?.filter((item) => {
             return item !== undefined;
         });
 
         resolve({
-            album: album_infos,
-            feat: feat
+            album: album_infos ?? [],
+            feat: feat ?? []
         });
     });
 }
