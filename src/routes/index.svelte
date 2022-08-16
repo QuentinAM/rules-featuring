@@ -149,29 +149,30 @@
 	});
 </script>
 
-<div class="text-sm breadcrumbs">
-	<ul>
-		<li><Translation id="home" /></li>
-	</ul>
-</div>
 <div>
+	<a class="text-primary hover:underline" href="https://rules.art/" target="_blank"
+		>Rules</a
+	>
 	<Translation id="description" />
 	(s/o
 	<a class="text-primary hover:underline" href="https://github.com/0xChqrles" target="_blank"
 		>Chqrles</a
 	>)
+	by <a class="text-primary hover:underline" href="https://quentinam.fr/" target="_blank">
+		QuentinAM
+	</a>
 </div>
 {#if loading}
 	<img src={Spinner} class="animate-spin h-10" alt="spinner" />
 {:else}
 	<div class="flex flex-col items-center">
-		<h1>{artistName1}</h1>
-		<div class="carousel lg:w-[23rem] w-[12rem]">
+		<h1 class="font-bold text-xl mb-1">{artistName1}</h1>
+		<div class="carousel lg:w-[20rem] w-[12rem]">
 			{#each allCards as card, index}
 				<div id={`${index}-1`} class="carousel-item relative w-full">
 					<img
 						src={card.pictureUrl}
-						class="lg:h-[30rem] h-[15rem] w-full"
+						class="lg:h-[26rem] h-[15rem] w-full"
 						alt={card.artist.displayName}
 					/>
 					<div

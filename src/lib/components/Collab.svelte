@@ -33,9 +33,9 @@
 	<div class="collapse-content space-y-4">
 		{#if album.length > 0}
             {#if album.length > 1}
-                <p>{album.length} <Translation id="common_projects" /> !</p>
+                <p><Translation id="common_Projects" /></p>
             {:else}
-                <p>{album.length} <Translation id="common_project" /> !</p>
+                <p><Translation id="common_Project" /></p>
             {/if}
         {/if}
 

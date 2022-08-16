@@ -11,14 +11,14 @@
 	<a
 		href={album.external_urls.spotify}
 		target="_blank"
-		class="font-semibold text-xl link link-hover">{album.name} - {artist1} x {artist2}</a
+		class="font-semibold lg:text-xl text-smlink link-hover">{album.name} - {artist1} x {artist2}</a
 	>
-	<p><Translation id="released_on" /> {album.release_date}</p>
+	<p class="lg:text-base text-xs"><Translation id="released_on" /> {album.release_date}</p>
 </div>
-<div class="card card-side bg-base-100 shadow-xl lg:h-52 h-32 w-full overflow-y-auto">
-	<figure><img src={album.images.url} class="lg:w-52 w-32" alt="Album" /></figure>
+<div class="card card-side bg-base-100 shadow-xl lg:h-52 h-24 w-full overflow-y-auto">
+	<figure><img src={album.images.url} class="lg:w-52 w-24" alt="Album" /></figure>
 	<div class="overflow-x-auto w-full">
-		<table class="table w-full">
+		<table class="table w-full lg:text-base text-xs">
 			<!-- head -->
 			<thead>
 				<tr>

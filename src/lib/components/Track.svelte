@@ -5,23 +5,23 @@
 	export let track: any;
 </script>
 
-<div class="card card-side bg-base-100 lg:h-52 h-40 shadow-2xl w-full">
-	<figure><img src={track.images.url} class="lg:w-52 w-40" alt="feat" /></figure>
+<div class="card card-side bg-base-100 lg:h-52 h-24 shadow-2xl w-full">
+	<figure><img src={track.images.url} class="lg:w-52 w-24" alt="feat" /></figure>
 	<div class="card-body lg:overflow-y-hidden overflow-y-auto h-full p-2 lg:p-8">
 		<h2 class="card-title">
 			<a
 				href={track.external_urls.spotify}
 				target="_blank"
-				class="font-semibold text-xl link link-hover">{track.name}</a
+				class="font-semibold lg:text-xl text-sm link link-hover">{track.name}</a
 			>
 		</h2>
-		<div class="text-slate-400 font-normal">
+		<div class="text-slate-400 font-normal lg:text-base text-xs">
 			{#each track.artists as artist, index}
 				<a class="link link-hover" href={artist.external_urls} target="_blank">{artist.name}</a
 				>{index === track.artists.length - 1 ? '' : ','}&nbsp;
 			{/each}
 		</div>
-		<p>
+		<p class="lg:text-base text-xs">
 			<Translation id="released_on" />
 			{track.release_date}
 			<Translation id="on" />
@@ -36,7 +36,7 @@
 						<track kind="captions" />
 					</audio>
 					<div class="divider divider-horizontal" />
-					<p>{`${millisToMinutesAndSeconds(track.duration_ms)}s`.replace('.', ':')}</p>
+					<p class="lg:text-base text-xs">{`${millisToMinutesAndSeconds(track.duration_ms)}s`.replace('.', ':')}</p>
 				</div>
 			</div>
 		{/if}
