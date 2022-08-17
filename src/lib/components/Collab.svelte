@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { scale, fade } from 'svelte/transition';
 	import Album from './Album.svelte';
 	import Track from './Track.svelte';
 	import Translation from './Translation.svelte';
@@ -10,7 +11,7 @@
 	export let feat: any[];
 </script>
 
-<div class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box w-full">
+<div class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box w-full" in:scale>
 	<input type="checkbox" />
 	<div class="collapse-title text-xl font-medium">
 		<div class="flex flex-row items-center space-x-2">

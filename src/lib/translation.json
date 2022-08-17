@@ -14,7 +14,7 @@
 		"loading": "Ce chargement ne se fait qu'une seule fois au chargement du site.",
 		"error": "Erreur, la carte ne doit pas avoir de possesseur.",
 		"not_available": "Non disponible",
-		"description": " Featuring est un site permettant de savoir quels artistes ont déjà collaboré ensemble",
+		"description": " ft. est un site permettant de savoir quels artistes ont déjà collaboré ensemble",
 		"history": "Historique",
 		"send": "Envoyer à un ami",
 		"common_projects": "projets communs",
@@ -26,7 +26,8 @@
 		"preview": "Aperçu",
 		"duration": "Durée",
 		"unavailable": "Non disponible",
-		"on": "sur"
+		"on": "sur",
+		"by": "par"
 	},
 	"EN": {
 		"home": "Home",
@@ -43,7 +44,7 @@
 		"loading": "This loading will only happen once to load all data.",
 		"error": "Error, card might not have an owner",
 		"not_available": "Not available",
-		"description": " featuring is a website to see which artist Rules has already collaborated with whom",
+		"description": " ft. is a website to see which artist Rules has already collaborated with whom",
 		"history": "History",
 		"send": "Send to a friend",
 		"common_projects": "common projects",
@@ -55,6 +56,7 @@
 		"preview": "Preview",
 		"duration": "Duration",
 		"unavailable": "Unavailable",
-		"on": "on"
+		"on": "on",
+		"by": "by"
 	}
 }

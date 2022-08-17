@@ -4,10 +4,9 @@
 	import Translation from '$lib/components/Translation.svelte';
 	import Spinner from '$lib/assets/spinner.png';
 	import { page } from '$app/stores';
-	// import { allData } from '$lib/store/utils';
 	import Collab from '$lib/components/Collab.svelte';
 
-	const artist1: string | null = $page.url.searchParams.get('artist1');
+	const artist: string | null = $page.url.searchParams.get('artist');
 	let artist1Index: number = 0;
 
 	let loading: boolean = true;
@@ -42,20 +41,6 @@
 			for (let i = 0; i < allCards.length; i++) {
 				if (i !== index) {
 					const artistName2 = allCards[i].artist.displayName;
-
-					// // Check in $allData if an object with artistName1 and artistName2 exists
-					// const data = $allData.find(d => d.artistName1 === artistName1 && d.artistName2 === artistName2);
-					// if (data)
-					// {
-					//     console.log('Data already exist', artistName1, artistName2);
-					//     albumData = [...albumData, data.album];
-					//     featData = [...featData, data.feat];
-					//     if (i === allCards.length - 1){
-					//         loadingAlbum = false;
-					//         loadingTrack = false;
-					//     }
-					//     continue;
-					// }
 
 					const pictureUrl = allCards[i].pictureUrl;
 					let uri = encodeURI(
@@ -92,29 +77,21 @@
 								}
 							];
 
-							// let newData = $allData;
-							// newData = [...newData, {
-							//     artistName1: artistName1,
-							//     artistName2: artistName2,
-							//     album: albumData,
-							//     feat: featData
-							// }];
-							// allData.set(newData);
-
 							if (i === allCards.length - 1) {
 								loadingAlbum = false;
 								loadingTrack = false;
 							}
-						});
+						})
+						.catch(err => console.log(err));
 				}
 			}
-		}, 1500);
+		}, 1000);
 	}
 
 	function Setup(data: any[]) {
 		allCards = data;
-		if (artist1) {
-			artistName1 = artist1;
+		if (artist) {
+			artistName1 = artist;
 
 			// Get artist 1 index
 			artist1Index = allCards.findIndex((card: any) => {
@@ -133,7 +110,7 @@
 
 	function Copy() {
 		navigator.clipboard.writeText(
-			encodeURI(`${location.protocol}//${location.host}${location.pathname}?artist1=${artistName1}`)
+			encodeURI(`${location.protocol}//${location.host}${location.pathname}?artist=${artistName1}`)
 		);
 		copiedClipboard = true;
 	}
@@ -158,7 +135,7 @@
 	<a class="text-primary hover:underline" href="https://github.com/0xChqrles" target="_blank"
 		>Chqrles</a
 	>)
-	by <a class="text-primary hover:underline" href="https://quentinam.fr/" target="_blank">
+	<Translation id="by" /> <a class="text-primary hover:underline" href="https://quentinam.fr/" target="_blank">
 		QuentinAM
 	</a>
 </div>
@@ -193,15 +170,13 @@
 			{/each}
 		</div>
 	</div>
-	{#if albumData.length > 0 || featData.length > 0}
-		<div
-			class:tooltip-success={copiedClipboard}
-			class="tooltip tooltip-bottom"
-			data-tip={copiedClipboard ? 'Copied !' : 'Copy'}
-		>
-			<button on:click={Copy} class="btn btn-primary w-full"><Translation id="send" /></button>
-		</div>
-	{/if}
+	<div
+		class:tooltip-success={copiedClipboard}
+		class="tooltip tooltip-right"
+		data-tip={copiedClipboard ? 'Copied !' : 'Copy'}
+	>
+		<button on:click={Copy} class="btn btn-primary w-full"><Translation id="send" /></button>
+	</div>
 	{#each albumData as album, index}
 		{#if album.found || featData[index].found}
 			<Collab

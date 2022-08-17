@@ -6,6 +6,10 @@
 	let languageSelected: any;
 	let loading: boolean = true;
 	const languages = ['FR', 'EN'];
+	const flags: any = {
+		"FR": "🇫🇷",
+		"EN": "🇬🇧"
+	}
 
 	onMount(async () => {
 		languageSelected = localStorage.getItem('language') || 'FR';
@@ -20,8 +24,7 @@
 	<select bind:value={languageSelected} class="select">
 		{#each languages as l}
 			<option value={l}>
-				<!-- <Flag code={l}/> -->
-				{l}
+				{flags[l]} &nbsp;{l}
 			</option>
 		{/each}
 	</select>
