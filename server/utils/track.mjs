@@ -1,7 +1,7 @@
-import { getToken, spToken } from './token.mjs';
+import { getToken } from './token.mjs';
 import Format from './utils.mjs';
 
-export default async function GetFeat(first_artist, second_artist, gotToken = false) {
+export default async function GetFeat(first_artist, second_artist, token) {
 	let url = encodeURI(
 		`https://api.spotify.com/v1/search?limit=50&type=track&market=fr&q=${`${first_artist} ${second_artist}`}`
 	);
@@ -11,14 +11,11 @@ export default async function GetFeat(first_artist, second_artist, gotToken = fa
 		response = await fetch(url, {
 			method: 'GET',
 			headers: {
-				Authorization: 'Bearer ' + spToken,
+				Authorization: 'Bearer ' + token,
 				'Content-Type': 'application/json'
 			}
 		});
 	} catch (err) {
-		if (gotToken) {
-			return [];
-		}
 	}
 
 	const data = await response.json();
@@ -26,8 +23,14 @@ export default async function GetFeat(first_artist, second_artist, gotToken = fa
 	// Check for errors
 	if ((data.error && data.error.status === 401) || (data.error && data.error.status === 400)) {
 		// Change headers and call again
+		return GetFeat(first_artist, second_artist, await getToken());
+	}
+	else if ((data.error && data.error.status === 429))
+	{
+		// Wait 5s and try again
+		await new Promise(resolve => setTimeout(resolve, 5000));
 		await getToken();
-		return GetFeat(first_artist, second_artist, true);
+		return GetAlbum(first_artist, second_artist, true);
 	}
 
 	let res = data.tracks?.items.map((item) => {

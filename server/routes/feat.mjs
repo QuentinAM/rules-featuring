@@ -3,13 +3,13 @@ import GetFeat from '../utils/track.mjs';
 import GetAlbum from '../utils/album.mjs';
 import { GetAlbumInfos } from '../utils/album.mjs';
 
-export default function GetFeatAndAlbum(first_artist, second_artist) {
+export default function GetFeatAndAlbum(first_artist, second_artist, token) {
 	return new Promise(async (resolve, reject) => {
-		const album = await GetAlbum(first_artist, second_artist);
+		const album = await GetAlbum(first_artist, second_artist, token);
 		let album_infos = album
 			? await Promise.all(
 					album.map((item) => {
-						if (item) return GetAlbumInfos(item.album.href);
+						if (item) return GetAlbumInfos(item.album.href, token);
 					})
 			  )
 			: [];
@@ -55,7 +55,7 @@ export default function GetFeatAndAlbum(first_artist, second_artist) {
 
 		// FEAT
 
-		let feat = await GetFeat(first_artist, second_artist);
+		let feat = await GetFeat(first_artist, second_artist, token);
 		feat = feat?.map((item) => {
 			// Check if track don't exist on common projects
 			if (

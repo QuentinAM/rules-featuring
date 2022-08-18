@@ -1,7 +1,5 @@
 import config from './env.json' assert { type: 'json' };
 
-export let spToken = '';
-
 export async function getToken() {
 	console.log('Getting token...');
 
@@ -19,6 +17,5 @@ export async function getToken() {
 		})
 	});
 	const data = await response.json();
-	spToken = data.access_token;
 	return data.access_token;
 }
