@@ -29,8 +29,7 @@ export default async function GetFeat(first_artist, second_artist, token) {
 	{
 		// Wait 5s and try again
 		await new Promise(resolve => setTimeout(resolve, 5000));
-		await getToken();
-		return GetAlbum(first_artist, second_artist, true);
+		return GetAlbum(first_artist, second_artist, await getToken());
 	}
 
 	let res = data.tracks?.items.map((item) => {
