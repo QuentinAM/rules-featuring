@@ -17,10 +17,8 @@ export default function GetAllCardModels() {
                 query{
                     allCardModels{
                         slug,
-                        pictureUrl,
-                        artist{
-                          displayName
-                        },
+						pictureUrl(derivative: "width=512"),
+                        artistName,
                         season
                     }
                 }`
@@ -30,12 +28,12 @@ export default function GetAllCardModels() {
 			.then((res) => {
 				const array = res.data.allCardModels;
 
-				// Remove dublet cards with same artist.displayName
+				// Remove dublet cards with same artistName
 				const uniqueArray = array
 					.filter((item, index) => {
 						return (
 							array.findIndex(
-								({ artist: { displayName } }) => displayName === item.artist.displayName
+								({ artistName }) => artistName === item.artistName
 							) === index
 						);
 					})

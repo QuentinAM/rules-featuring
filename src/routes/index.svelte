@@ -29,7 +29,7 @@
 		loadingTrack = true;
 		albumData = [];
 		featData = [];
-		artistName1 = allCards[index].artist.displayName;
+		artistName1 = allCards[index].artistName;
 
 		if (!timeoutFinished) {
 			clearTimeout(timeout);
@@ -40,7 +40,7 @@
 			timeoutFinished = true;
 			for (let i = 0; i < allCards.length; i++) {
 				if (i !== index) {
-					const artistName2 = allCards[i].artist.displayName;
+					const artistName2 = allCards[i].artistName;
 
 					const pictureUrl = allCards[i].pictureUrl;
 					let uri = encodeURI(
@@ -95,7 +95,7 @@
 
 			// Get artist 1 index
 			artist1Index = allCards.findIndex((card: any) => {
-				return card.artist.displayName === artistName1;
+				return card.artistName === artistName1;
 			});
 
 			console.log(artist1Index);
@@ -150,7 +150,7 @@
 					<img
 						src={card.pictureUrl}
 						class="lg:h-[26rem] h-[15rem] w-full"
-						alt={card.artist.displayName}
+						alt={card.artistName}
 					/>
 					<div
 						class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
